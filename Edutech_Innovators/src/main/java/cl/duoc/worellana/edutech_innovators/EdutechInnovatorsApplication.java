@@ -8,6 +8,7 @@ public class EdutechInnovatorsApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(EdutechInnovatorsApplication.class, args);
+        System.out.println("test git");
     }
 
 }

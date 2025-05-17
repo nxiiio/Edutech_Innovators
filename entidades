@@ -1,0 +1,29 @@
+ENTIDADES IDENTIFICADOS:
+
+- Administrador:
+    Creación de usuarios.
+    Actualización de usuarios
+    Desactivación de usuarios.
+    Eliminación de usuarios.
+
+- Gerente de cursos:
+    Creación de cursos.
+    Actualización de cursos.
+    Eliminación de cursos.
+  
+- Instructores:
+    Creación y actualización de material didáctico.
+    Administración de evaluaciones.
+    
+- Clientes (usuario):  
+    Exploración del catálogo de cursos mediante filtros y búsqueda.
+    Inscripción en cursos.
+    Calificación y notas de cursos.
+    Consulta del progreso en los cursos inscritos
+    
+    Registro de cuentas de usuario. #
+    Autenticación segura y acceso a la cuenta. #
+
+
+
+Lo que esta marcado con # hay que revisarlo

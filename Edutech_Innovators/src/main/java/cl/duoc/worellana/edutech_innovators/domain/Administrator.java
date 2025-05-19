@@ -1,4 +1,4 @@
 package cl.duoc.worellana.edutech_innovators.domain;
 
-public class Gerente {
+public class Administrator {
 }

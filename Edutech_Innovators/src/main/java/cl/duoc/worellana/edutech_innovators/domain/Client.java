@@ -12,6 +12,7 @@ import lombok.Setter;
 public class Client {
     Long id;
     String nome;
+    String email;
     Long age;
 
 }

@@ -14,5 +14,4 @@ public class Inscription {
     String nameInscription;
     Long clientId;
     Long courseId;
-    Integer calification;
 }

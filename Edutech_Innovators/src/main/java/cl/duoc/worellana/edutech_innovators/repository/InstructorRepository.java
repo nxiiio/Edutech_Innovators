@@ -17,26 +17,46 @@ public class InstructorRepository implements CrudInterface<Instructor> {
 
     @Override
     public List<Instructor> findAll() {
-        return List.of();
+        return repository;
     }
 
     @Override
     public Optional<Instructor> findById(Long id) {
+        for (Instructor instructor : repository) {
+            if (instructor.getId().equals(id)) {
+                return Optional.of(instructor);
+            }
+        }
         return Optional.empty();
     }
 
     @Override
-    public Instructor save(Instructor entity) {
-        return null;
+    public Instructor save(Instructor instructor) {
+        repository.add(instructor);
+        return instructor;
     }
 
     @Override
-    public Optional<Instructor> update(Long id, Instructor entity) {
+    public Optional<Instructor> update(Long id, Instructor instructorRequest) {
+        int currentId = 0;
+        for (Instructor instructor : repository) {
+            if (instructor.getId().equals(id)) {
+                repository.set(currentId, instructorRequest);
+                return Optional.of(instructorRequest);
+            }
+            currentId++;
+        }
         return Optional.empty();
     }
 
     @Override
     public boolean delete(Long id) {
+        for (Instructor instructor : repository) {
+            if (instructor.getId().equals(id)) {
+                repository.remove(instructor);
+                return true;
+            }
+        }
         return false;
     }
 }

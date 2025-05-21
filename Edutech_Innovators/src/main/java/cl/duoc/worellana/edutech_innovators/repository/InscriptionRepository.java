@@ -17,26 +17,46 @@ public class InscriptionRepository implements CrudInterface<Inscription> {
 
     @Override
     public List<Inscription> findAll() {
-        return List.of();
+        return repository;
     }
 
     @Override
     public Optional<Inscription> findById(Long id) {
+        for (Inscription inscription : repository) {
+            if (inscription.getId().equals(id)) {
+                return Optional.of(inscription);
+            }
+        }
         return Optional.empty();
     }
 
     @Override
-    public Inscription save(Inscription entity) {
-        return null;
+    public Inscription save(Inscription inscription) {
+        repository.add(inscription);
+        return inscription;
     }
 
     @Override
-    public Optional<Inscription> update(Long id, Inscription entity) {
+    public Optional<Inscription> update(Long id, Inscription inscriptionRequest) {
+        int currentId = 0;
+        for (Inscription inscription : repository) {
+            if (inscription.getId().equals(id)) {
+                repository.set(currentId, inscriptionRequest);
+                return Optional.of(inscriptionRequest);
+            }
+            currentId++;
+        }
         return Optional.empty();
     }
 
     @Override
     public boolean delete(Long id) {
+        for (Inscription inscription : repository) {
+            if (inscription.getId().equals(id)) {
+                repository.remove(inscription);
+                return true;
+            }
+        }
         return false;
     }
 }

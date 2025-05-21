@@ -18,26 +18,46 @@ public class ClientRepository implements CrudInterface<Client>{
 
     @Override
     public List<Client> findAll() {
-        return List.of();
+        return repository;
     }
 
     @Override
     public Optional<Client> findById(Long id) {
+        for (Client client : repository){
+            if (client.getId().equals(id)){
+                return Optional.of(client);
+            }
+        }
         return Optional.empty();
     }
 
     @Override
-    public Client save(Client entity) {
-        return null;
+    public Client save(Client client) {
+        repository.add(client);
+        return client;
     }
 
     @Override
-    public Optional<Client> update(Long id, Client entity) {
+    public Optional<Client> update(Long id, Client clientRequest) {
+        int currentId = 0;
+        for (Client client : repository){
+            if (client.getId().equals(id)){
+                repository.set(currentId, clientRequest);
+                return Optional.of(clientRequest);
+            }
+            currentId++;
+        }
         return Optional.empty();
     }
 
     @Override
     public boolean delete(Long id) {
+        for (Client client : repository) {
+            if (client.getId().equals(id)) {
+                repository.remove(client);
+                return true;
+            }
+        }
         return false;
     }
 }

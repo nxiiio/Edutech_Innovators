@@ -25,26 +25,46 @@ public class CourseRepository implements CrudInterface<Course> {
 
     @Override
     public List<Course> findAll() {
-        return List.of();
+        return repository;
     }
 
     @Override
     public Optional<Course> findById(Long id) {
+        for (Course course : repository) {
+            if (course.getId().equals(id)) {
+                return Optional.of(course);
+            }
+        }
         return Optional.empty();
     }
 
     @Override
-    public Course save(Course entity) {
-        return null;
+    public Course save(Course course) {
+        repository.add(course);
+        return course;
     }
 
     @Override
-    public Optional<Course> update(Long id, Course entity) {
+    public Optional<Course> update(Long id, Course courseRequest) {
+        int currentId = 0;
+        for (Course course : repository) {
+            if (course.getId().equals(id)) {
+                repository.set(currentId, courseRequest);
+                return Optional.of(courseRequest);
+            }
+            currentId++;
+        }
         return Optional.empty();
     }
 
     @Override
     public boolean delete(Long id) {
+        for (Course course : repository) {
+            if (course.getId().equals(id)) {
+                repository.remove(course);
+                return true;
+            }
+        }
         return false;
     }
 }

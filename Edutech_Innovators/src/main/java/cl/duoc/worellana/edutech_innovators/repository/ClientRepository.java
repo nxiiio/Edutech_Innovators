@@ -11,9 +11,9 @@ import java.util.Optional;
 public class ClientRepository implements CrudInterface<Client>{
 
     private List<Client> repository = new ArrayList<>(List.of(
-            new Client(1L, "Luis Herrera", "luis.herrera@example.com"),
-            new Client(2L, "Valentina Rojas", "valentina.rojas@example.com"),
-            new Client(3L, "Ignacio Torres", "ignacio.torres@example.com")
+            new Client(1L, "Luis Herrera", "luis.herrera@example.com",19L),
+            new Client(2L, "Valentina Rojas", "valentina.rojas@example.com", 20L),
+            new Client(3L, "Ignacio Torres", "ignacio.torres@example.com", 43L)
     ));
 
     @Override

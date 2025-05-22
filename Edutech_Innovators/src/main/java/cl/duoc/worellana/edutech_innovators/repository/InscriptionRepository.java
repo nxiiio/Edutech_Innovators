@@ -50,13 +50,7 @@ public class InscriptionRepository implements CrudInterface<Inscription> {
     }
 
     @Override
-    public boolean delete(Long id) {
-        for (Inscription inscription : repository) {
-            if (inscription.getId().equals(id)) {
-                repository.remove(inscription);
-                return true;
-            }
-        }
-        return false;
+    public boolean delete(Inscription inscriptionRequest) {
+        return repository.remove(inscriptionRequest);
     }
 }

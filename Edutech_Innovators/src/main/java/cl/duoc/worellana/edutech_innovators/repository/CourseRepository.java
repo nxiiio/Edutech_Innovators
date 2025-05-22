@@ -57,13 +57,7 @@ public class CourseRepository implements CrudInterface<Course> {
     }
 
     @Override
-    public boolean delete(Long id) {
-        for (Course course : repository) {
-            if (course.getId().equals(id)) {
-                repository.remove(course);
-                return true;
-            }
-        }
-        return false;
+    public boolean delete(Course courseRequest) {
+        return repository.remove(courseRequest);
     }
 }

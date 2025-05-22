@@ -50,14 +50,8 @@ public class InstructorRepository implements CrudInterface<Instructor> {
     }
 
     @Override
-    public boolean delete(Long id) {
-        for (Instructor instructor : repository) {
-            if (instructor.getId().equals(id)) {
-                repository.remove(instructor);
-                return true;
-            }
-        }
-        return false;
+    public boolean delete(Instructor instructorRequest) {
+        return repository.remove(instructorRequest);
     }
 
 }

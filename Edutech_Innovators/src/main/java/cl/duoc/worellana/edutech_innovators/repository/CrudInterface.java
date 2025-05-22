@@ -8,5 +8,5 @@ public interface CrudInterface<T> {
     Optional<T> findById(Long id);
     T save(T entity);
     boolean update(Long id, T entity);
-    boolean delete(Long id);
+    boolean delete(T entity);
 }

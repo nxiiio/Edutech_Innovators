@@ -34,7 +34,13 @@ public class ClientService {
         return repository.update(client.getId(), client);
     }
 
-    public boolean deleteClient(Long id) {
-        return repository.delete(id);
+    public boolean deleteClient(Client clientRequest) {
+        Optional<Client> client = repository.findById(clientRequest.getId());
+        if (client.isPresent()) {
+            repository.delete(client.get());
+            return true;
+        }
+
+        return false;
     }
 }

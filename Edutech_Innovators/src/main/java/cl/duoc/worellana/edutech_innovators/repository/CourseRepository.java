@@ -45,16 +45,16 @@ public class CourseRepository implements CrudInterface<Course> {
     }
 
     @Override
-    public Optional<Course> update(Long id, Course courseRequest) {
-        int currentId = 0;
+    public boolean update(Long id, Course courseRequest) {
         for (Course course : repository) {
             if (course.getId().equals(id)) {
-                repository.set(currentId, courseRequest);
-                return Optional.of(courseRequest);
+                course.setId(courseRequest.getId());
+                course.setNameCourse(courseRequest.getNameCourse());
+                course.setDescriptionCourse(courseRequest.getDescriptionCourse());
+                return true;
             }
-            currentId++;
         }
-        return Optional.empty();
+        return false;
     }
 
     @Override

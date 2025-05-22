@@ -38,16 +38,17 @@ public class ClientRepository implements CrudInterface<Client>{
     }
 
     @Override
-    public Optional<Client> update(Long id, Client clientRequest) {
-        int currentId = 0;
+    public boolean update(Long id, Client clientRequest) {
         for (Client client : repository){
             if (client.getId().equals(id)){
-                repository.set(currentId, clientRequest);
-                return Optional.of(clientRequest);
+                client.setId(clientRequest.getId());
+                client.setNome(clientRequest.getNome());
+                client.setEmail(clientRequest.getEmail());
+                client.setAge(clientRequest.getAge());
+                return true;
             }
-            currentId++;
         }
-        return Optional.empty();
+        return false;
     }
 
     @Override

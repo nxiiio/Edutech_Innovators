@@ -37,16 +37,17 @@ public class InstructorRepository implements CrudInterface<Instructor> {
     }
 
     @Override
-    public Optional<Instructor> update(Long id, Instructor instructorRequest) {
-        int currentId = 0;
+    public boolean update(Long id, Instructor instructorRequest) {
         for (Instructor instructor : repository) {
             if (instructor.getId().equals(id)) {
-                repository.set(currentId, instructorRequest);
-                return Optional.of(instructorRequest);
+                instructor.setId(instructorRequest.getId());
+                instructor.setName(instructorRequest.getName());
+                instructor.setEmail(instructorRequest.getEmail());
+                instructor.setSpecialization(instructorRequest.getSpecialization());
+                return true;
             }
-            currentId++;
         }
-        return Optional.empty();
+        return false;
     }
 
     @Override
@@ -59,4 +60,5 @@ public class InstructorRepository implements CrudInterface<Instructor> {
         }
         return false;
     }
+
 }

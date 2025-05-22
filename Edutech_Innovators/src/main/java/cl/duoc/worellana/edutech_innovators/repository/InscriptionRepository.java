@@ -40,7 +40,6 @@ public class InscriptionRepository implements CrudInterface<Inscription> {
     public boolean update(Long id, Inscription inscriptionRequest) {
         for (Inscription inscription : repository) {
             if (inscription.getId().equals(id)) {
-                inscription.setId(inscriptionRequest.getId());
                 inscription.setNameInscription(inscriptionRequest.getNameInscription());
                 inscription.setClientId(inscriptionRequest.getClientId());
                 inscription.setCourseId(inscriptionRequest.getCourseId());

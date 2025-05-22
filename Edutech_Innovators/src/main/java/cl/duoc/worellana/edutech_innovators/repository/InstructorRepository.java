@@ -40,7 +40,6 @@ public class InstructorRepository implements CrudInterface<Instructor> {
     public boolean update(Long id, Instructor instructorRequest) {
         for (Instructor instructor : repository) {
             if (instructor.getId().equals(id)) {
-                instructor.setId(instructorRequest.getId());
                 instructor.setName(instructorRequest.getName());
                 instructor.setEmail(instructorRequest.getEmail());
                 instructor.setSpecialization(instructorRequest.getSpecialization());

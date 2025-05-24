@@ -44,26 +44,19 @@ public class InscriptionRepository implements CrudInterface<Inscription> {
     }
 
     @Override
-    public Optional<Inscription> update(Long id, Inscription inscriptionRequest) {
-        int currentId = 0;
+    public boolean update(Inscription inscriptionRequest) {
         for (Inscription inscription : repository) {
-            if (inscription.getId().equals(id)) {
-                repository.set(currentId, inscriptionRequest);
-                return Optional.of(inscriptionRequest);
-            }
-            currentId++;
-        }
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean delete(Long id) {
-        for (Inscription inscription : repository) {
-            if (inscription.getId().equals(id)) {
-                repository.remove(inscription);
+            if (inscription.getId().equals(inscriptionRequest.getId())) {
+                inscription.setClientId(inscriptionRequest.getClientId());
+                inscription.setCourseId(inscriptionRequest.getCourseId());
                 return true;
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean delete(Inscription inscriptionRequest) {
+        return repository.remove(inscriptionRequest);
     }
 }

@@ -37,26 +37,21 @@ public class InstructorRepository implements CrudInterface<Instructor> {
     }
 
     @Override
-    public Optional<Instructor> update(Long id, Instructor instructorRequest) {
-        int currentId = 0;
+    public boolean update(Instructor instructorRequest) {
         for (Instructor instructor : repository) {
-            if (instructor.getId().equals(id)) {
-                repository.set(currentId, instructorRequest);
-                return Optional.of(instructorRequest);
-            }
-            currentId++;
-        }
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean delete(Long id) {
-        for (Instructor instructor : repository) {
-            if (instructor.getId().equals(id)) {
-                repository.remove(instructor);
+            if (instructor.getId().equals(instructorRequest.getId())) {
+                instructor.setName(instructorRequest.getName());
+                instructor.setEmail(instructorRequest.getEmail());
+                instructor.setSpecialization(instructorRequest.getSpecialization());
                 return true;
             }
         }
         return false;
     }
+
+    @Override
+    public boolean delete(Instructor instructorRequest) {
+        return repository.remove(instructorRequest);
+    }
+
 }

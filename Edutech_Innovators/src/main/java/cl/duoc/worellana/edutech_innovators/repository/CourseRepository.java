@@ -20,8 +20,21 @@ public class CourseRepository implements CrudInterface<Course> {
                                                                           "hasta que seas capaz de desarrollar tus propias aplicaciones y automatizaciones. "),
 
             new Course(3L, "Curso de Excel", "Este curso de Excel está diseñado para enseñarte desde los conceptos básicos hasta herramientas" +
-                                                                        "avanzadas que te permitirán analizar, organizar y visualizar datos de forma eficiente.")
-    ));
+                                                                        "avanzadas que te permitirán analizar, organizar y visualizar datos de forma eficiente."),
+
+            new Course(4L, "Curso de Desarrollo Web", "Aprende HTML, CSS y JavaScript para crear sitios web interactivos y responsivos desde cero."),
+
+            new Course(5L, "Curso de Ciberseguridad", "Conoce los fundamentos de la ciberseguridad, detección de amenazas, y buenas prácticas para proteger sistemas."),
+
+            new Course(6L, "Curso de Bases de Datos", "Aprende SQL y diseño de bases de datos relacionales utilizando MySQL o PostgreSQL."),
+
+            new Course(7L, "Curso de Spring Boot", "Domina el desarrollo de aplicaciones web robustas usando Spring Boot y el ecosistema de Spring."),
+
+            new Course(8L, "Curso de Comunicación Efectiva", "Mejora tus habilidades para presentar ideas, comunicarte en equipos y negociar en ambientes laborales."),
+
+            new Course(9L, "Curso de Inglés Técnico", "Enfocado en mejorar el inglés para el entorno tecnológico y profesional, incluyendo lectura y escritura de documentación técnica.")
+
+            ));
 
     @Override
     public List<Course> findAll() {

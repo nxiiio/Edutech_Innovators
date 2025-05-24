@@ -9,12 +9,19 @@ import java.util.Optional;
 
 @Repository
 public class InscriptionRepository implements CrudInterface<Inscription> {
-    private List<Inscription> repository = new ArrayList<>(List.of(
+    List<Inscription> repository = new ArrayList<>(List.of(
             new Inscription(1L, 1L, 1L),
-            new Inscription(2L,2L, 2L),
-            new Inscription(3L,3L, 3L),
-            new Inscription(4L,1L, 3L),
-            new Inscription(5L,3L, 2L)
+            new Inscription(2L, 2L, 2L),
+            new Inscription(3L, 3L, 3L),
+            new Inscription(4L, 1L, 3L),
+            new Inscription(5L, 3L, 2L),
+            new Inscription(6L, 2L, 4L),
+            new Inscription(7L, 1L, 5L),
+            new Inscription(8L, 3L, 6L),
+            new Inscription(9L, 1L, 7L),
+            new Inscription(10L, 2L, 8L),
+            new Inscription(11L, 3L, 9L),
+            new Inscription(12L, 2L, 10L)
     ));
 
     @Override

@@ -11,7 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Inscription {
     Long id;
-    String nameInscription;
     Long clientId;
     Long courseId;
 }

@@ -45,4 +45,34 @@ public class InscriptionService {
         }
         return details;
     }
+
+    public Optional<InscriptionDetailsDto> getInscription(Long id){
+        List<Inscription> inscriptions = inscriptionRepository.findAll();
+
+        for (Inscription ins : inscriptions){
+            Optional<Client> client = clientRepository.findById(ins.getClientId());
+            Optional<Course> course = courseRepository.findById(ins.getCourseId());
+
+            if (client.isPresent() && course.isPresent()){
+                InscriptionDetailsDto result = new InscriptionDetailsDto(
+                        ins.getId(),
+                        client.get().getNome(),
+                        course.get().getNameCourse()
+                );
+                return Optional.of(result);
+            }
+        }
+        return Optional.empty();
+    }
+
+    public boolean addInscription(Inscription inscriptionRequest){
+        Optional<Client> client = clientRepository.findById(inscriptionRequest.getClientId());
+        Optional<Course> course = courseRepository.findById(inscriptionRequest.getCourseId());
+
+        if (client.isPresent() && course.isPresent()) {
+            inscriptionRepository.save(inscriptionRequest);
+            return true;
+        }
+        return false;
+    }
 }

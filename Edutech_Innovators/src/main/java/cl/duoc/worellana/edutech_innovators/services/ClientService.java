@@ -31,7 +31,7 @@ public class ClientService {
     }
 
     public boolean updateClient(Client client) {
-        return repository.update(client.getId(), client);
+        return repository.update(client);
     }
 
     public boolean deleteClient(Client clientRequest) {

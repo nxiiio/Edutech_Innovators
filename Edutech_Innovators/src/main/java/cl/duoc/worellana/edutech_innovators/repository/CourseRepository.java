@@ -45,9 +45,9 @@ public class CourseRepository implements CrudInterface<Course> {
     }
 
     @Override
-    public boolean update(Long id, Course courseRequest) {
+    public boolean update(Course courseRequest) {
         for (Course course : repository) {
-            if (course.getId().equals(id)) {
+            if (course.getId().equals(courseRequest.getId())) {
                 course.setNameCourse(courseRequest.getNameCourse());
                 course.setDescriptionCourse(courseRequest.getDescriptionCourse());
                 return true;

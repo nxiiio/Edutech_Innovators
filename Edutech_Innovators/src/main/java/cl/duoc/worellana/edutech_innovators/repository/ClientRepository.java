@@ -38,9 +38,9 @@ public class ClientRepository implements CrudInterface<Client>{
     }
 
     @Override
-    public boolean update(Long id, Client clientRequest) {
+    public boolean update(Client clientRequest) {
         for (Client client : repository){
-            if (client.getId().equals(id)){
+            if (client.getId().equals(clientRequest.getId())){
                 client.setNome(clientRequest.getNome());
                 client.setEmail(clientRequest.getEmail());
                 client.setAge(clientRequest.getAge());

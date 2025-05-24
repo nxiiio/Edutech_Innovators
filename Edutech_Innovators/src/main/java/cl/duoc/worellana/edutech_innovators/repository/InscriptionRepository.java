@@ -8,11 +8,11 @@ import java.util.Optional;
 
 public class InscriptionRepository implements CrudInterface<Inscription> {
     private List<Inscription> repository = new ArrayList<>(List.of(
-            new Inscription(1L, "Inscripción Java - Luis", 1L, 1L),
-            new Inscription(2L, "Inscripción Python - Valentina", 2L, 2L),
-            new Inscription(3L, "Inscripción Excel - Ignacio", 3L, 3L),
-            new Inscription(4L, "Inscripción Excel - Luis", 1L, 3L),
-            new Inscription(5L, "Inscripción Python - Ignacio", 3L, 2L)
+            new Inscription(1L, 1L, 1L),
+            new Inscription(2L,2L, 2L),
+            new Inscription(3L,3L, 3L),
+            new Inscription(4L,1L, 3L),
+            new Inscription(5L,3L, 2L)
     ));
 
     @Override

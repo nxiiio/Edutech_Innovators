@@ -21,9 +21,6 @@ ENTIDADES IDENTIFICADOS:
     Calificación y notas de cursos.
     Consulta del progreso en los cursos inscritos
     
-    Registro de cuentas de usuario. #
-    Autenticación segura y acceso a la cuenta. #
 
-
-
-Lo que esta marcado con # hay que revisarlo
+POSIBLE FEATURE:
+que el usuario pueda filtrar los cursos ya sea tecnologicos, comunicacion, etc

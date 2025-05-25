@@ -44,6 +44,7 @@ public class ManagerController {
 
     @PutMapping("/courses/{id}")
     public ResponseEntity<Course> replaceCourse(@PathVariable Long id, @RequestBody Course request){
+        request.setId(id);
         boolean result = service.updateCourse(request);
 
         if (result){

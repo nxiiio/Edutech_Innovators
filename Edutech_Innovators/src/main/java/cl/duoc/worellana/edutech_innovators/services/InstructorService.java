@@ -42,21 +42,18 @@ public class InstructorService {
     }
 
     public Optional<InstructorDetailsDto> getInstructor(Long id){
-        List<Instructor> instructors = instructorRepository.findAll();
+        Optional<Instructor> found = instructorRepository.findById(id);
 
-        for (Instructor ins : instructors){
-            Optional<Course> course = courseRepository.findById(ins.getIdCourse());
-
-            if (course.isPresent()){
-                InstructorDetailsDto result = new InstructorDetailsDto(
-                        ins.getId(),
-                        ins.getName(),
-                        ins.getEmail(),
-                        ins.getSpecialization(),
-                        course.get().getNameCourse()
-                );
-                return Optional.of(result);
-            }
+        if (found.isPresent()){
+            Optional<Course> course = courseRepository.findById(found.get().getIdCourse());
+            InstructorDetailsDto result = new InstructorDetailsDto(
+                    found.get().getId(),
+                    found.get().getName(),
+                    found.get().getEmail(),
+                    found.get().getSpecialization(),
+                    course.get().getNameCourse()
+            );
+            return Optional.of(result);
         }
         return Optional.empty();
     }

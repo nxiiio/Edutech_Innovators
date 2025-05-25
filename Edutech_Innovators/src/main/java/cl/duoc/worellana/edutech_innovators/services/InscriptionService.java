@@ -50,8 +50,8 @@ public class InscriptionService {
         List<Inscription> inscriptions = inscriptionRepository.findAll();
 
         for (Inscription ins : inscriptions){
-            Optional<Client> client = clientRepository.findById(ins.getClientId());
-            Optional<Course> course = courseRepository.findById(ins.getCourseId());
+            Optional<Client> client = clientRepository.findById(id);
+            Optional<Course> course = courseRepository.findById(id);
 
             if (client.isPresent() && course.isPresent()){
                 InscriptionDetailsDto result = new InscriptionDetailsDto(
@@ -74,5 +74,19 @@ public class InscriptionService {
             return true;
         }
         return false;
+    }
+
+    public boolean deleteInscription(Long id){
+        Optional<Inscription> inscriptionFound = inscriptionRepository.findById(id);
+
+        if (inscriptionFound.isPresent()){
+            inscriptionRepository.delete(inscriptionFound.get());
+            return true;
+        }
+        return false;
+    }
+
+    public boolean updateInscription(Inscription inscriptionRequest){
+        return inscriptionRepository.update(inscriptionRequest);
     }
 }

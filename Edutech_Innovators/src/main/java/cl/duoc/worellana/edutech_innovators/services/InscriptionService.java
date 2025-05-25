@@ -68,8 +68,9 @@ public class InscriptionService {
     public boolean addInscription(Inscription inscriptionRequest){
         Optional<Client> client = clientRepository.findById(inscriptionRequest.getClientId());
         Optional<Course> course = courseRepository.findById(inscriptionRequest.getCourseId());
+        Optional<Inscription> exits = inscriptionRepository.findById(inscriptionRequest.getId());
 
-        if (client.isPresent() && course.isPresent()) {
+        if (client.isPresent() && course.isPresent() && exits.isEmpty()) {
             inscriptionRepository.save(inscriptionRequest);
             return true;
         }

@@ -14,5 +14,6 @@ public class Instructor {
     String name;
     String email;
     String specialization;
+    Long idCourse;
 
 }

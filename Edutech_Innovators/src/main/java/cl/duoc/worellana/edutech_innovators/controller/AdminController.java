@@ -17,8 +17,7 @@ public class AdminController {
 
     @Autowired
     ClientService service;
-    @Autowired
-    private ClientService clientService;
+
 
     @GetMapping("/clients")
     public ResponseEntity<List<Client>> showClients(){
@@ -48,7 +47,7 @@ public class AdminController {
     @PutMapping("/clients/{id}")
     public ResponseEntity<Client> replaceClient(@PathVariable Long id, @RequestBody Client request){
         request.setId(id);
-        boolean result = clientService.updateClient(request);
+        boolean result = service.updateClient(request);
 
         if (result){
             return ResponseEntity.ok(request);
@@ -58,7 +57,7 @@ public class AdminController {
 
     @DeleteMapping("/clients/{id}")
     public ResponseEntity<Client> deleteClient(@PathVariable Long id){
-        boolean result = clientService.deleteClient(id);
+        boolean result = service.deleteClient(id);
 
         if (result){
             return ResponseEntity.noContent().build();

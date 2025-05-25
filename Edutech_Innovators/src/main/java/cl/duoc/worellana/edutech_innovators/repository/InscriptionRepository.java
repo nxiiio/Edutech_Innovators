@@ -1,11 +1,13 @@
 package cl.duoc.worellana.edutech_innovators.repository;
 
 import cl.duoc.worellana.edutech_innovators.domain.Inscription;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class InscriptionRepository implements CrudInterface<Inscription> {
     List<Inscription> repository = new ArrayList<>(List.of(
             new Inscription(1L, 1L, 1L),

@@ -1,11 +1,13 @@
 package cl.duoc.worellana.edutech_innovators.repository;
 
 import cl.duoc.worellana.edutech_innovators.domain.Instructor;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class InstructorRepository implements CrudInterface<Instructor> {
 
     List<Instructor> repository = new ArrayList<>(List.of(

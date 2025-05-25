@@ -47,21 +47,24 @@ public class InscriptionService {
     }
 
     public Optional<InscriptionDetailsDto> getInscription(Long id){
-        List<Inscription> inscriptions = inscriptionRepository.findAll();
+        Optional<Inscription> found = inscriptionRepository.findById(id);
 
-        for (Inscription ins : inscriptions){
-            Optional<Client> client = clientRepository.findById(id);
-            Optional<Course> course = courseRepository.findById(id);
+        if (found.isPresent()) {
+            Inscription inscription = found.get();
 
-            if (client.isPresent() && course.isPresent()){
+            Optional<Client> client = clientRepository.findById(inscription.getClientId());
+            Optional<Course> course = courseRepository.findById(inscription.getCourseId());
+
+            if (client.isPresent() && course.isPresent()) {
                 InscriptionDetailsDto result = new InscriptionDetailsDto(
-                        ins.getId(),
+                        inscription.getId(),
                         client.get().getNome(),
                         course.get().getNameCourse()
                 );
                 return Optional.of(result);
             }
         }
+
         return Optional.empty();
     }
 

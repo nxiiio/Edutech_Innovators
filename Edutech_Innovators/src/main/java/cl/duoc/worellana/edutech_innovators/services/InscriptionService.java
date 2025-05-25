@@ -86,7 +86,6 @@ public class InscriptionService {
         }
         return false;
     }
-
     public boolean updateInscription(Inscription inscriptionRequest){
         return inscriptionRepository.update(inscriptionRequest);
     }

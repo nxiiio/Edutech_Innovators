@@ -25,12 +25,9 @@ public class InstructorController {
 
     @GetMapping("/{id}")
     public ResponseEntity<InstructorDetailsDto> showInstructor(@PathVariable Long id){
-        Optional<InstructorDetailsDto> found = service.getInstructor(id);
-
-        if (found.isPresent()){
-            return ResponseEntity.ok(found.get());
-        }
-        return ResponseEntity.notFound().build();
+        return service.getInstructor(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
